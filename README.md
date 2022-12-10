@@ -1,2 +1,2 @@
 # stanly
-A tool for building Lua into real Standalone Binary
+A tool for building Lua scripts into real Standalone Lua static binary
