@@ -1,16 +1,22 @@
 {
   "name": "stanly",
   "version": "0.0.1",
-  "main": "index.js",
+  "main": "src/main.js",
   "repository": "https://github.com/UrNightmaree/stanly",
   "author": "UrNightmaree",
   "license": "MIT",
+
+  "bin": {
+	  "stanly": "bin/stanly.js"
+  },
+
   "type": "module",
   "devDependencies": {
+    "@types/node": "^18.11.12",
     "typescript": "^4.9.4"
   },
   "dependencies": {
-    "arg": "^5.0.2",
-    "chalk": "^5.2.0"
+    "chalk": "^5.2.0",
+    "commander": "^9.4.1"
   }
 }
