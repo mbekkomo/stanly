@@ -14,7 +14,7 @@ const { version } = JSON.parse(
 const cli = new Command();
 
 cli
-  .name(process.argv[1])
+  .name("stanly")
   .description("A tool for building Lua into real Standalone Binary")
   .version(version, "-v --version");
 
