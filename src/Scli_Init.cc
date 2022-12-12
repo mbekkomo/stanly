@@ -3,7 +3,6 @@
 #include <iostream>
 #include <string>
 
-static
 std::string doPrompt(std::string text, std::string defValue = "") {
 	std::cout << termcolor::bold << text + ' '
 		<< termcolor::grey << '(' + defValue + ')'
@@ -22,8 +21,7 @@ std::string doPrompt(std::string text, std::string defValue = "") {
 std::string latestLuaVersion = "5.4.4";
 std::string latestLuarocksVersion = "3.9.2";
 
-cli_Init::SlyInfo_t
-cli_Init::promptInit() {
+cli_Init::SlyInfo_t cli_Init::promptInit() {
 	std::string luaVersion = doPrompt("lua version",latestLuaVersion);
 	std::string luarocksVersion = doPrompt("luarocks version",latestLuarocksVersion);
 	std::cout << "lua: " + luaVersion
