@@ -28,22 +28,27 @@ std::string latestLuarocksVersion = "3.9.2";
 cli_Init::SlyInfo_t cli_Init::promptInit() {
 	std::string luaVersion = prompt("lua version",latestLuaVersion);
 	std::string luarocksVersion = prompt("luarocks version",latestLuarocksVersion);
-start_luaFile:
-	std::string luaFile = prompt("lua file");
-	
-	if (! std::filesystem::exists(luaFile)) {
-		std::cerr << termcolor::red << termcolor::bold
-			<< "invalid path to lua file!\n"
-			<< termcolor::reset;
-		goto start_luaFile;
-	}
 
-	std::cmatch _;
-	if (! std::regex_match(luaFile.c_str(),_,(std::regex) ".+?\\.lua$")) {
-		std::cerr << termcolor::red << termcolor::bold
-			<< "not a lua file!\n"
-			<< termcolor::reset;
-		goto start_luaFile;
+	std::string luaFile;
+	while (true) {
+		luaFile = prompt("lua file");
+
+		if (! std::filesystem::exists(luaFile)) {
+			std::cerr << termcolor::red << termcolor::bold
+				<< "invalid path to lua file!\n"
+				<< termcolor::reset;
+			continue;
+		}
+
+		std::smatch _;
+		if (! std::regex_match(luaFile,_,(std::regex) ".+?\\.lua$")) {
+			std::cerr << termcolor::red << termcolor::bold
+				<< "not a lua file!\n"
+				<< termcolor::reset;
+			continue;
+		}
+
+		break;
 	}
 
 	std::cout 
