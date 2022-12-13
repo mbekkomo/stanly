@@ -1,10 +1,11 @@
 #include <iostream>
 #include <ostream>
-#include "Scli_Init.hh"
+#include "Sterm.hh"
 
 int main() {
 	std::cout << "Hello Stanly!" << std::endl;
 	std::cout << "Testing:" << std::endl;
-	cli_Init::promptInit();
+	term::logInfo("test");
+	term::logWarning("wow");
 	return 0;
 }

@@ -1,0 +1,3 @@
+lua 5.4.4
+luarocks 3.9.2
+file /home/naree/project/stanly/xmake.lua

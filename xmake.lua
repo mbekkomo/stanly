@@ -1,4 +1,4 @@
-add_rules("mode.debug", "mode.release")
+add_requires("argparse")
 
 target("stanly")
     set_kind("binary")

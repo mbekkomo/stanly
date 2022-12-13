@@ -5,13 +5,9 @@
 #include <vector>
 
 namespace cli_Init {
-	typedef struct {
-		std::string luaVersion;
-		std::string luarocksVersion;
-		std::vector<std::string> luarocksDeps;
-	} SlyInfo_t;
-
-	SlyInfo_t promptInit(void);
+	std::vector<std::string> promptInit(void);
+	void createSlyFile(std::vector<std::string> finfo);
+	void cmdInit(void);
 }
 
 #endif /* Scli_Init_HH */
