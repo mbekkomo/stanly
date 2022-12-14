@@ -7,5 +7,7 @@ int main() {
 	std::cout << "Testing:" << std::endl;
 	term::logInfo("test");
 	term::logWarning("wow");
+	term::logError("ehh");
+	term::logFailure("fail to uwu");
 	return 0;
 }
