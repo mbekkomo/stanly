@@ -10,7 +10,7 @@ namespace term {
 	void logError(std::string txt);
 	void logFailure(std::string txt);
 	void logSuccess(std::string txt);
-	std::string prompt(std::string txt, std::string defaultValue = "");
+	std::string prompt(std::string txt, std::string defaultValue = "", bool newline = false);
 }
 
 #endif /* Sterm_HH */
