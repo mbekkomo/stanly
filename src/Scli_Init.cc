@@ -1,5 +1,5 @@
-#include "termcolor/termcolor.hpp"
 #include "Scli_Init.hh"
+#include "Sterm.hh"
 
 #include <fstream>
 #include <iostream>
@@ -8,45 +8,25 @@
 #include <regex>
 #include <filesystem>
 
-std::string prompt(std::string text, std::string defValue = "") {
-	std::cout // V //
-		<< termcolor::bold << text + ' '
-		<< termcolor::grey << '(' + defValue + ')'
-		<< termcolor::reset
-		<< termcolor::bold << ": "
-		<< termcolor::reset;
-
-	std::string res;
-	std::getline(std::cin,res);
-	if (res == "")
-		res = defValue;
-
-	return res;
-}
-
 std::string latestLuaVersion = "5.4.4";
 std::string latestLuarocksVersion = "3.9.2";
 
 std::vector<std::string> cli_Init::promptInit() {
-	std::string luaVersion = prompt("lua version",latestLuaVersion);
-	std::string luarocksVersion = prompt("luarocks version",latestLuarocksVersion);
+	std::string luaVersion = term::prompt("lua version",latestLuaVersion);
+	std::string luarocksVersion = term::prompt("luarocks version",latestLuarocksVersion);
 
 	std::string luaFile;
 	while (true) {
-		luaFile = prompt("lua file");
+		luaFile = term::prompt("lua file");
 
 		if (! std::filesystem::exists(luaFile)) {
-			std::cerr << termcolor::red << termcolor::bold
-				<< "invalid path to lua file!\n"
-				<< termcolor::reset;
+			term::logError("file not exists!");
 			continue;
 		}
 
 		std::smatch _;
 		if (! std::regex_match(luaFile,_,(std::regex) ".+?\\.lua$")) {
-			std::cerr << termcolor::red << termcolor::bold
-				<< "not a lua file!\n"
-				<< termcolor::reset;
+			term::logError("not a lua file!");
 			continue;
 		}
 
@@ -77,9 +57,7 @@ void cli_Init::createSlyFile(std::vector<std::string> finfo) {
 	slyF << fContent;
 	slyF.close();
 
-	std::cout << termcolor::green << termcolor::bold
-		<< "created `build.sly`\n"
-		<< termcolor::reset;
+	term::logSuccess(std::string("successfully created `") + std::filesystem::absolute("build.sly").string() + std::string("`"));
 }
 
 void cli_Init::cmdInit() {

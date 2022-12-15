@@ -6,7 +6,7 @@
 
 namespace tc = termcolor;
 
-std::string indent = "  ";
+std::string indent = " ";
 
 constexpr int cGrey = 246;
 constexpr int cPrompt = 7;
@@ -34,7 +34,7 @@ void term::logWarning(std::string txt) {
 }
 
 void term::logError(std::string txt) {
-	std::cout << tc::bold
+	std::cerr << tc::bold
 		<< tc::color<cGrey> << '|'
 		<< tc::color<cRed> << '!'
 		<< tc::color<cGrey> << '|'
@@ -43,7 +43,7 @@ void term::logError(std::string txt) {
 }
 
 void term::logFailure(std::string txt) {
-	std::cout << tc::bold
+	std::cerr << tc::bold
 		<< tc::color<cGrey> << '|'
 		<< tc::color<cRed> << '-'
 		<< tc::color <cGrey> << '|'
@@ -73,7 +73,7 @@ std::string term::prompt(std::string txt, std::string defaultValue, bool newline
 			<< tc::grey << '(' + defaultValue + ')'
 			<< tc::reset
 			<< "\n " + indent
-			<< tc::color<cGrey> << "-> "
+			<< tc::bold << tc::grey << "-> "
 			<< tc::reset << tc::color<cPrompt>;
 	else
 		std::cout << ' ' << tc::bold
