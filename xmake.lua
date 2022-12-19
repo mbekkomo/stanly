@@ -1,4 +1,4 @@
-add_requires("argparse")
+add_requires("argparse 2.9","yaml-cpp 0.7.0","termcolor 2.1.0")
 
 target("stanly")
     set_kind("binary")

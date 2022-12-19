@@ -3,6 +3,7 @@
 
 #include <fstream>
 #include <iostream>
+#include <sstream>
 #include <string>
 #include <vector>
 #include <regex>
@@ -41,23 +42,18 @@ std::vector<std::string> cli_Init::promptInit() {
 }
 
 void cli_Init::createSlyFile(std::vector<std::string> finfo) {
-	std::string codeF[3] = {
-		"lua ",
-		"luarocks ",
-		"file "
-	};
+	std::ostringstream fContent;
+	fContent << "# What Lua and Luarocks should be used\n"
+		<< "lua-version: \"" << finfo[0] << "\"\n"
+		<< "luarocks-version: \"" << finfo[1] << "\"\n\n"
+		<< "# What Lua file that should be compiled to static binary\n"
+		<< "lua-file: \"" << finfo[2] << '"' << std::endl;
 
-	std::string fContent = "";
-	for (int i = 0; i < finfo.size(); i++) {
-		fContent += codeF[i] + finfo[i] + '\n';
-	}
+	std::ofstream slyYaml("project.sly.yaml");
+	slyYaml << fContent.str();
+	slyYaml.close();
 
-	std::ofstream slyF;
-	slyF.open("build.sly");
-	slyF << fContent;
-	slyF.close();
-
-	term::logSuccess(std::string("successfully created `") + std::filesystem::absolute("build.sly").string() + std::string("`"));
+	term::logSuccess(std::string("successfully created `") + std::filesystem::absolute("project.sly.yaml").string() + std::string("`"));
 }
 
 void cli_Init::cmdInit() {
