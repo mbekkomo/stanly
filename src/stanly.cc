@@ -7,9 +7,7 @@
 int main() {
 	std::cout << "Hello Stanly!" << std::endl;
 	std::cout << "Testing:\n" << std::endl;
-	
-	std::vector<std::string> a(2,{"a","b"});
 
-	std::cout << utils::vectorJoin(a,"") << std::endl;
+	std::cout << utils::stringToCHex("hello") << std::endl;
 	return 0;
 }
