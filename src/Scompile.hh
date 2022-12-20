@@ -5,7 +5,7 @@
 #include <string>
 
 namespace compile {
-	std::string luaToC(std::string text);
+	std::string genC(std::string text);
 }
 
 #endif /* Scompile_HH */

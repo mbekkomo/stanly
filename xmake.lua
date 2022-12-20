@@ -2,8 +2,9 @@ add_requires("argparse 2.9","yaml-cpp 0.7.0","termcolor 2.1.0")
 
 target("stanly")
     set_kind("binary")
-		set_languages("cxx17")
+	set_languages("cxx17")
     add_files("src/*.cc")
+	add_packages("argparse","yaml-cpp","termcolor")
 
 --
 -- If you want to known more usage about xmake, please see https://xmake.io
