@@ -1,8 +1,15 @@
 #include "Scompile.hh"
 
 #include <iostream>
-#include <filesystem>
 #include <string>
+#include <filesystem>
+#include <vector>
+#include <map>
+
+#include <cstdlib>
+
+std::string CC = std::getenv("CC") ? std::getenv("CC") : "cc";
+std::string NM = std::getenv("NM") ? std::getenv("NM") : "nm";
 
 bool isSourceFile(std::string extFile) {
 	return
@@ -18,6 +25,7 @@ bool isBinaryLibrary(std::string extFile) {
 		extFile == "dylib";
 }
 
-std::string compile::genC(std::string text) {
-
+std::string compile::genC(std::string text, std::map<std::string, std::vector<std::string>> info) {
+	std::cout << CC << std::endl;
+	return "";
 }
