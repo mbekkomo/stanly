@@ -1,3 +1,3 @@
 {
-	"clangd.fallbackFlags": [ "-std=c++17" ]
+	"clangd.fallbackFlags": [ "-std=c++17", "-isystem /home/koosh/.xmake/packages/a/argparse/2.9/e4dadafca96e49a2baf2b395247f43d2/include", "-isystem /home/koosh/.xmake/packages/y/yaml-cpp/0.7.0/c43d7f3fd9044adcaea2b25c200c62dd/include", "-isystem /home/koosh/.xmake/packages/t/termcolor/2.1.0/b0e68af4a7b64cb6add061ace4160fd5/include" ]
 }
